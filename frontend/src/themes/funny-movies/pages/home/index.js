@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Input} from 'antd';
+
 import './stylesheet.scss';
 
 const {Search} = Input;
@@ -11,7 +12,6 @@ class CashRent extends React.Component {
     return (
       <div className="ui-home-funny-movies">
       fadsfadfads
-
       </div>
     );
   }
