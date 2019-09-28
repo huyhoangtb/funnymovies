@@ -17,6 +17,11 @@ class UserDetail extends React.Component {
     history.push('/')
   }
 
+
+  goToShareMoviePage = () => {
+    history.push('/share-movie')
+  }
+
   render() {
     const {user} = this.props;
 
@@ -26,7 +31,7 @@ class UserDetail extends React.Component {
           Welcome {user.email}
         </div>
         <div className='m-r-20'>
-          <Button type="primary" shape="round" icon="share-alt" size='large'>
+          <Button type="primary" onClick={this.goToShareMoviePage} shape="round" icon="share-alt" size='large'>
             Share a movie
           </Button>
         </div>

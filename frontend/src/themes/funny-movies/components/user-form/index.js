@@ -10,7 +10,7 @@ import {getParamsFromSearchString} from "../../../../common";
 import {history} from "../../../../store";
 
 
-class UserForm extends React.Component {
+class Index extends React.Component {
 
   constructor(props) {
     super(props);
@@ -41,7 +41,7 @@ class UserForm extends React.Component {
     return (
 
       <FormGeneration
-        className="login-form"
+        className="login-form ui-login-register"
         formProps={{
           layout: 'inline',
           className:'ui-user-form'
@@ -63,5 +63,5 @@ class UserForm extends React.Component {
   }
 }
 
-export default UserForm;
+export default Index;
 

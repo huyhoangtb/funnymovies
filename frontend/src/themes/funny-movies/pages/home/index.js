@@ -1,12 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Input} from 'antd';
 
 import './stylesheet.scss';
 
-const {Search} = Input;
-
-class CashRent extends React.Component {
+class FunnyMovie extends React.Component {
 
   render() {
     return (
@@ -17,4 +14,4 @@ class CashRent extends React.Component {
   }
 }
 
-export default connect()(CashRent);
+export default connect()(FunnyMovie);
