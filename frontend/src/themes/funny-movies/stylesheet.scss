@@ -1,0 +1,124 @@
+@import "css-avaiable";
+
+
+$theme-font-family: 'Open Sans', "intercom-font", "ui-header-adminHelvetica Neue", Helvetica, Arial, sans-serif;
+
+.register_or_login_drawer {
+  .ant-drawer-content-wrapper {
+    height: 100% !important;
+  }
+}
+
+
+.ui-funny-movies-drawer {
+  .ant-drawer-content-wrapper {
+    background: white;
+
+    .ui-custom-drawer-body {
+      background: white;
+    }
+
+    .ant-drawer-content {
+      background: white;
+
+      .ant-drawer-wrapper-body {
+        .ant-drawer-header {
+          .ui-title {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+
+            .ui-back-icon {
+              position: absolute;
+              opacity: 0.8;
+              left: 0;
+              cursor: pointer;
+              &:hover {
+                opacity: 1;
+              }
+            }
+          }
+
+          background: var(--primary-color);
+          border-radius: 0;
+
+          .ant-drawer-title {
+            color: white;
+          }
+
+          .ant-drawer-close {
+            color: white;
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+.ui-funny-movies-layout {
+  font-size: 14px;
+  background: #ffffff !important;
+
+  .ui-funny-movies-body {
+    img {
+      max-width: 100% !important;
+    }
+  }
+
+  .ui-page-content {
+    min-height: 200px;
+  }
+
+  .ant-layout-header, .ant-layout-footer {
+    background: transparent !important;
+    padding: 0;
+  }
+
+  .ui-funny-movies-header {
+    height: auto !important;
+  }
+
+  .ui-funny-movies-home-item {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+
+    a {
+      color: #a1b1bc;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .ui-left {
+      flex-grow: 1;
+      display: flex;
+    }
+
+    .ui-right {
+      border-right: 1px solid #26303e;
+      display: flex;
+
+      .ui-item {
+        &:first-child {
+          border: none;
+        }
+      }
+    }
+
+    .ui-item {
+      border-left: 1px solid #26303e;
+      line-height: 24px;
+      padding: 12px 24px;
+
+      span {
+        display: inline-block;
+        margin-left: 10px;
+      }
+    }
+  }
+}

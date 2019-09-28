@@ -1,0 +1,130 @@
+@import "../../../configs/css-configuration.scss";
+
+.ui-drawer-top {
+  transform: none !important;
+
+  .ant-drawer-content-wrapper {
+    height: calc(100% - 50px) !important;
+  }
+}
+
+.ui-drawer-bottom {
+  .ant-drawer-content-wrapper {
+    height: calc(100% - 100px) !important;
+  }
+}
+
+.ui-drawer-top, .ui-drawer-bottom {
+  .ant-drawer-content-wrapper {
+    background: #f4f8fb;
+    overflow-y: scroll;
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
+
+    .ant-drawer-content {
+      width: auto !important;
+      height: auto !important;
+      //background: $main-content-bg-color;
+    }
+
+    .ant-drawer-body {
+      //box-shadow: 0px 5px 5px #cccccc;
+      background: #f4f8fb;
+      padding: 45px 0 0 0 !important;
+    }
+
+    .ui-custom-drawer-body {
+
+      display: flex;
+
+      .ui-drawer-menu-left {
+        width: 250px;
+        //margin-right: 20px;
+        padding: 20px 0;
+      }
+
+      .ui-drawer-content {
+        flex-grow: 1;
+        width: 250px;
+        position: relative;
+        padding: 20px 20px;
+      }
+    }
+
+    .ant-drawer-header {
+      background: rgb(243, 243, 243);
+      padding-bottom: 0 !important;
+      padding-top: 0 !important;
+      background: linear-gradient(152deg, rgba(243, 243, 243, 1) 0%, rgba(242, 244, 244, 1) 100%);
+      position: fixed;
+      z-index: 1000;
+      width: 100%;
+
+      .ant-menu {
+        background: transparent !important;
+        border-bottom: none;
+      }
+
+      .ant-menu-horizontal {
+        .ant-menu-item .anticon + span, .ant-menu-submenu-title .anticon + span {
+          font-weight: normal !important;
+        }
+      }
+
+      .ant-drawer-close {
+        top: -5px;
+      }
+
+      .ui-header-popup-screen {
+        display: flex;
+
+        .ui-title {
+          flex-grow: 1;
+          min-width: 150px;
+          line-height: 46px;
+        }
+
+        .ui-popup-screen-menu {
+          max-width: calc(100% - 200px) !important;
+          margin-right: 20px;
+          min-height: calc(100% - 50px);
+        }
+      }
+    }
+  }
+
+}
+
+.ui-drawer-panel {
+  .ui-drawer-title {
+    display: flex;
+
+    .ui-text {
+      flex-grow: 1;
+    }
+  }
+}
+
+.ui-new-panel {
+
+  .ui-button {
+    position: fixed;
+    bottom: 20px;
+    z-index: 1;
+    right: 20px;
+    padding: 8px;
+    box-shadow: 0 1px 5px #cccccc;
+    border-radius: 50%;
+    background: white;
+
+    .new-icon {
+      font-size: 35px;
+      cursor: pointer;
+
+      color: $primary-color;
+
+    }
+  }
+
+}

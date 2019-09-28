@@ -1,0 +1,44 @@
+.ui-drag-drop-root {
+  //border: 1px solid #cccccc;
+  .ui-draggable-wrapper {
+    position: relative;
+    padding: 8px;
+    //margin: 8px;
+  }
+
+
+  .ui-recursive-panel {
+    .ui-content-control {
+      border: none !important;
+      //background-color: #f1f1f1 !important;
+      text-align: right;
+
+      .ui-control-item {
+        margin-left: 20px;
+        font-size: 20px;
+      }
+    }
+
+    //
+    //&.active {
+    //  .ui-content-control {
+    //    display: block !important;
+    //  }
+    //
+    //}
+  }
+
+  .ui-drop-panel {
+    margin-bottom: 20px;
+  }
+
+  .editing {
+    border: 0px solid #ffffff;
+    background-color: #ffffff;
+  }
+
+  .ui-editable-comp {
+    padding: 5px;
+    display: inline-block;
+  }
+}

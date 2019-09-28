@@ -1,0 +1,69 @@
+.ui-user-avatar {
+  display: flex;
+  cursor: pointer;
+  align-self: center;
+  line-height: 16px;
+
+  .user-menu-popover {
+
+  }
+
+  .avatar {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .info {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+
+    > div {
+      line-height: 16px;
+
+      &.display-name {
+        font-weight: 600;
+        color: #ffffff;
+      }
+
+      &.role-name {
+        font-size: 12px;
+        opacity: 0.5;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.user-account-short-link {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: block;
+    padding: 10px 0;
+
+    a {
+      color: black;
+
+      span {
+        display: inline-block;
+        margin-left: 10px;
+      }
+
+      &:hover {
+        opacity: 0.9;
+        color: var(--primary-color);
+      }
+    }
+
+  }
+}
+
+.ant-popover-title {
+  padding: 10px 16px;
+}

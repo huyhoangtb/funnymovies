@@ -1,0 +1,35 @@
+.ui-login-form {
+  .login-form {
+    max-width: 350px;
+    padding: 0;
+    margin: 100px auto 0 auto;
+  }
+
+  .ant-btn {
+    width: 100%;
+  }
+
+
+  .create-account {
+    margin-top: 20px;
+  }
+
+  .summit-btn {
+    margin-top: 20px;
+  }
+
+  .login-facebook {
+    margin-top: 20px;
+    background: #0a66b7;
+    color: white;
+  }
+
+  .forgot-password-link {
+    margin-top: 20px;
+    color: black;
+    width: 100%;
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}

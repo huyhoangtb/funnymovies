@@ -1,7 +1,6 @@
 .idea/
 src/**/*.css
-frontent/.idea/
 server-api/.idea/
-frontent/.idea/
+frontend/.idea/
 server-api/node_modules/
-frontent/node_modules/
+frontend/node_modules/
