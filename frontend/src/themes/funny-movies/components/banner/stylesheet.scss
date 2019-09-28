@@ -12,6 +12,21 @@
     align-items: center;
 
     .ui-login-register {
+      .ant-form-inline .ant-form-item-with-help {
+        margin-bottom: 0 !important;
+      }
+      .ant-form-item {
+        margin-bottom: 0;
+      }
+      .ant-form-explain {
+        position: absolute;
+        bottom: -16px;
+      }
+      .ui-user-form {
+
+
+
+      }
 
     }
 

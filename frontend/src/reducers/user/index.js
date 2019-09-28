@@ -6,14 +6,12 @@ if (userState) {
     userState = JSON.parse(userState);
   } catch (ex) {
     userState = {
-      authInfo: {},
       user: {},
-      orgs: [],
     };
   }
 }
 
-const UserState = (state = userState || { authInfo: {}, user: {}, orgs: [] }, action) => {
+const UserState = (state = userState || { user: {} }, action) => {
   let newState = {};
   switch (action.type) {
     case userActionTypes.ON_LOGIN_SUCCESS:

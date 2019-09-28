@@ -20,14 +20,18 @@ export class MyUserService implements UserService<User, Credentials> {
   ) {}
 
   async verifyCredentials(credentials: Credentials): Promise<User> {
-    const foundUser = await this.userRepository.findOne({
+    let foundUser = await this.userRepository.findOne({
       where: {email: credentials.email},
     });
 
     if (!foundUser) {
-      throw new HttpErrors.NotFound(
-        `User with email ${credentials.email} not found.`,
-      );
+      const user = new User();
+      user.email = credentials.email;
+      user.password = credentials.password;
+      foundUser = await this.userRepository.create(user);
+      // throw new HttpErrors.NotFound(
+      //   `User with email ${credentials.email} not found.`,
+      // );
     }
 
     const passwordMatched = await this.passwordHasher.comparePassword(
@@ -43,13 +47,7 @@ export class MyUserService implements UserService<User, Credentials> {
   }
 
   convertToUserProfile(user: User): UserProfile {
-    // since first name and lastName are optional, no error is thrown if not provided
-    let userName = '';
-    if (user.firstName) userName = `${user.firstName}`;
-    if (user.lastName)
-      userName = user.firstName
-        ? `${userName} ${user.lastName}`
-        : `${user.lastName}`;
-    return {id: user.id, name: userName};
+    delete user.password;
+    return {...user};
   }
 }

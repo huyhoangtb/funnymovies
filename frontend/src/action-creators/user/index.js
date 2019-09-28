@@ -33,12 +33,4 @@ export default {
     email,
     options,
   }),
-  setUserOrganizations: (orgs) => ({
-    type: userActionTypes.SET_USER_ORGANIZATION,
-    orgs,
-  }),
-  setCurrentWorkingOrg: (currentOrg) => ({
-    type: userActionTypes.SET_CURRENT_WORKING_ORGANIZATION,
-    currentOrg,
-  }),
 };

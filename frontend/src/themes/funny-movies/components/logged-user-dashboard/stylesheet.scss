@@ -1,0 +1,14 @@
+.ui-user-info-dashboard {
+  display: flex;
+  align-items: center;
+
+  .logout-icon {
+    font-size: 26px;
+    color: #08c;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

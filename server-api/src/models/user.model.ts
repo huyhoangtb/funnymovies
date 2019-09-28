@@ -1,5 +1,4 @@
 import {model, property, Entity} from '@loopback/repository';
-import {validate, Contains, IsInt, MinLength, IsEmail, IsFQDN, IsDate, Min, Max, } from "class-validator";
 
 @model({settings: {strict: false}})
 export class User extends Entity {
@@ -17,34 +16,9 @@ export class User extends Entity {
 
     @property({
         type: 'string',
-        required: true,
-    })
-    firstName: string;
-
-    @property({
-        type: 'string',
-        required: true
-    })
-    lastName: string;
-
-    @property({
-        type: 'string',
         required: true
     })
     email: string;
-
-    @property({
-        type: 'string',
-        required: true
-    })
-    address: string;
-
-
-    @property({
-        type: 'string',
-        required: true
-    })
-    phone?: string;
 
     @property({
         type: 'string',
@@ -52,11 +26,6 @@ export class User extends Entity {
     })
     password: string;
 
-    @property({
-        type: 'string',
-        require: true
-    })
-    username: string;
 
 }
 
