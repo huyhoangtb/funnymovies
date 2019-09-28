@@ -47,7 +47,7 @@ export class MyUserService implements UserService<User, Credentials> {
   }
 
   convertToUserProfile(user: User): UserProfile {
-    let userName = '';
+    delete user.password;
     return {...user};
   }
 }

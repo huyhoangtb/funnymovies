@@ -27,7 +27,7 @@ export default [
         url: '/admin/management/org',
       },
       {
-        title: Translate.t1('User'),
+        title: Translate.t1('UserForm'),
         url: '/admin/management/user',
       },
       {

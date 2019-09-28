@@ -49,7 +49,8 @@ class SForm extends React.Component {
   summitOnEnter = (event) => {
     event = event || window.event;
     const className = event && event.target && event.target.className;
-    if (className !== 'ant-input') {
+
+    if (!className || !className.split(' ').includes('ant-input')) {
       return;
     }
 
@@ -62,20 +63,17 @@ class SForm extends React.Component {
     let { submitLabel, resetLabel, className, leftSummitBtn, leftSummitBtns, rightSummitBtn, rightSummitBtns, confirmBeforeSummit, confirmText, layout } = this.props;
     submitLabel = submitLabel || 'submit';
     const formProps = this.props.formProps || {};
+    const summitProps = this.props.summitProps || {}
 
     return (
       <Form
         {...formProps}
         onKeyPress={this.summitOnEnter}
-        onChange={this.onChange}
-        onVolumeChange={this.onChange}
         className={`ant-advanced-search-form schema-form-panel ${className}`}
       >
 
         {this.props.children}
-
-        <Row>
-          <Col span={24} style={{ textAlign: 'center' }}>
+        <Form.Item>
             {leftSummitBtn}
             {leftSummitBtns}
             {
@@ -89,7 +87,7 @@ class SForm extends React.Component {
             }
             {
               !confirmBeforeSummit &&
-              <Button ref="summitButton" className='summit-btn' type="primary" onClick={this.onSummitForm}>{submitLabel}</Button>
+              <Button ref="summitButton" className='summit-btn' type="primary" {...summitProps}  onClick={this.onSummitForm}>{submitLabel}</Button>
             }
             {
               rightSummitBtn
@@ -97,9 +95,7 @@ class SForm extends React.Component {
             {
               rightSummitBtns
             }
-
-          </Col>
-        </Row>
+        </Form.Item>
       </Form>
     );
   }

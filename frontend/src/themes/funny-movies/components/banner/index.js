@@ -1,11 +1,10 @@
 import React from 'react';
-import Layout from 'antd/lib/layout';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import User from './User';
-import { Button } from 'antd';
+import UserForm from './UserForm';
+import LoggedInUserDashboard from '../logged-user-dashboard';
 import './stylesheet.scss';
 
-const {Content, Footer} = Layout;
 
 class FunnyMovieBanner extends React.Component {
 
@@ -14,19 +13,31 @@ class FunnyMovieBanner extends React.Component {
   }
 
   render() {
+    const user = this.props.user || {};
 
     return (
       <div className='ui-banner-top'>
         <div className='ui-body-panel ui-banner-body'>
           <div className='ui-logo-panel'><Link  to={'/'}><span className='ui-funny'>Funny</span> Movies</Link> </div>
           <div className='ui-login-register'>
-            <User/>
+            { //todo: check token expiresIn
+              !user.id && <UserForm/>
+            }
+
+            {
+              user.id && <LoggedInUserDashboard user={user}/>
+            }
+
           </div>
         </div>
       </div>
     );
   }
 }
-
-export default FunnyMovieBanner;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user && state.user.user
+  }
+}
+export default connect(mapStateToProps)(FunnyMovieBanner);
 

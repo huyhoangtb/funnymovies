@@ -23,7 +23,8 @@ export class AuthenticateController {
       public jwtService: TokenService,
       @inject(UserServiceBindings.USER_SERVICE)
       public userService: UserService<User, Credentials>,
-  ) {}
+  ) {
+  }
 
   @get('/user/me', {
     responses: {
@@ -62,10 +63,10 @@ export class AuthenticateController {
         description: 'The input of login function',
         required: true,
         content: {
-          'application/json': { schema: getModelSchemaRef(Credentials) },
+          'application/json': {schema: getModelSchemaRef(Credentials)},
         },
       }) credentials: Credentials,
-  ): Promise<{token: string, user: User, userProfile: UserProfile}> {
+  ): Promise<{ _success: boolean, _result: {token: string, user: UserProfile} }> {
     // ensure the user exists, and the password is correct
     const user = await this.userService.verifyCredentials(credentials);
 
@@ -76,9 +77,11 @@ export class AuthenticateController {
     const token = await this.jwtService.generateToken(userProfile);
 
     return {
-      token,
-      user,
-      userProfile
-    };
+      _success: true,
+      _result: {
+        token,
+        user: userProfile,
+      }
+    }
   }
 }
