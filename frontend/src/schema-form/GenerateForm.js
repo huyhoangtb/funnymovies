@@ -153,7 +153,7 @@ class GenerateForm extends React.Component {
   render() {
     return (
       <Sform {...this.props} onChange={this.onChange}>
-        <Row gutter={16}>{this.getFields()}</Row>
+        {this.getFields()}
       </Sform>
     );
   }
