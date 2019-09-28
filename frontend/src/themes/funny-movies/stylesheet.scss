@@ -9,58 +9,15 @@ $theme-font-family: 'Open Sans', "intercom-font", "ui-header-adminHelvetica Neue
   }
 }
 
-
-.ui-funny-movies-drawer {
-  .ant-drawer-content-wrapper {
-    background: white;
-
-    .ui-custom-drawer-body {
-      background: white;
-    }
-
-    .ant-drawer-content {
-      background: white;
-
-      .ant-drawer-wrapper-body {
-        .ant-drawer-header {
-          .ui-title {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            text-align: center;
-
-            .ui-back-icon {
-              position: absolute;
-              opacity: 0.8;
-              left: 0;
-              cursor: pointer;
-              &:hover {
-                opacity: 1;
-              }
-            }
-          }
-
-          background: var(--primary-color);
-          border-radius: 0;
-
-          .ant-drawer-title {
-            color: white;
-          }
-
-          .ant-drawer-close {
-            color: white;
-          }
-        }
-      }
-    }
-
-  }
-
-}
-
 .ui-funny-movies-layout {
   font-size: 14px;
-  background: #ffffff !important;
+  background-color: #f9f9f9;
+
+
+  .ui-body-panel {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
   .ui-funny-movies-body {
     img {
@@ -70,6 +27,10 @@ $theme-font-family: 'Open Sans', "intercom-font", "ui-header-adminHelvetica Neue
 
   .ui-page-content {
     min-height: 200px;
+  }
+
+  .ant-layout-header {
+    height: 80px;
   }
 
   .ant-layout-header, .ant-layout-footer {

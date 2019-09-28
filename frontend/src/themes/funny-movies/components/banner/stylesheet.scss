@@ -1,0 +1,39 @@
+.ui-banner-top {
+  padding: 0;
+  width: 100%;
+  box-shadow: 0 1px 6px rgba(57, 73, 76, 0.35);
+  background-color: #ffffff;
+  //background-color: #f9f9f9;
+  //background-color: #0069C7;
+
+  .ui-banner-body {
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    .ui-login-register {
+
+    }
+
+    .ui-logo-panel {
+      flex-grow: 1;
+
+      a {
+        color: black;
+        font-family: raleway, helvetica neue, Helvetica, Arial, sans-serif;
+        font-size: 39px;
+        font-weight: 200;
+
+        .ui-funny {
+          font-weight: 300;
+          color: #0087e0;
+        }
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+    }
+  }
+}
