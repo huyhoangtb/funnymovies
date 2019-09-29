@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Col, Form, Popconfirm, Row, Tabs } from 'antd';
-import { connect } from 'react-redux';
+import {Button, Col, Form, Popconfirm, Row, Tabs} from 'antd';
+import {connect} from 'react-redux';
 import FormCommon from 'schema-form/common';
 import './stylesheet.scss';
 
@@ -60,7 +60,7 @@ class SForm extends React.Component {
   }
 
   render() {
-    let { submitLabel, resetLabel, className, leftSummitBtn, leftSummitBtns, rightSummitBtn, rightSummitBtns, confirmBeforeSummit, confirmText, layout } = this.props;
+    let {submitLabel, resetLabel, className, leftSummitBtn, leftSummitBtns, rightSummitBtn, rightSummitBtns, confirmBeforeSummit, confirmText, layout} = this.props;
     submitLabel = submitLabel || 'submit';
     const formProps = this.props.formProps || {};
     const summitProps = this.props.summitProps || {}
@@ -73,7 +73,8 @@ class SForm extends React.Component {
       >
 
         {this.props.children}
-        <Form.Item>
+        <div className='ant-col ant-col-8 ui-btn-submit-panel'>
+          <Form.Item>
             {leftSummitBtn}
             {leftSummitBtns}
             {
@@ -87,7 +88,8 @@ class SForm extends React.Component {
             }
             {
               !confirmBeforeSummit &&
-              <Button ref="summitButton" className='summit-btn' type="primary" {...summitProps}  onClick={this.onSummitForm}>{submitLabel}</Button>
+              <Button ref="summitButton" className='summit-btn' type="primary" {...summitProps}
+                      onClick={this.onSummitForm}>{submitLabel}</Button>
             }
             {
               rightSummitBtn
@@ -95,7 +97,8 @@ class SForm extends React.Component {
             {
               rightSummitBtns
             }
-        </Form.Item>
+          </Form.Item>
+        </div>
       </Form>
     );
   }

@@ -6,7 +6,7 @@ import Store from 'store';
 const CommonURL = {
 
   getUserAuthInfo: () => {
-    return Store.getState().user && Store.getState().user.authInfo ? Store.getState().user.authInfo : {};
+    return Store.getState().user || {};
   },
 
   getUser: () => {
@@ -64,19 +64,11 @@ const CommonURL = {
     }
     const headers = configs.headers || {};
     const authInfo = CommonURL.getUserAuthInfo();
-    const user = CommonURL.getUser();
-    let attachedNodes = headers.attachedNodes || localParams.attachedNodes || {};
-    attachedNodes = typeof attachedNodes === 'string' ? attachedNodes : JSON.stringify(attachedNodes);
-    const orgInfo = CommonURL.getWorkingOrgInfo();
     configs = {
       ...configs,
       headers: {
         ...headers,
-        ...orgInfo,
-        attachedNodes,
-        node: headers.node || localParams.node,
-        passport: authInfo.token,
-        userIid: user.iid,
+        Authorization: `Bearer ${authInfo.token}`,
 
       },
     };

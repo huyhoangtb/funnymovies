@@ -8,6 +8,8 @@ import {PasswordHasher} from './services/authentication/hash.password.bcryptjs';
 import {TokenService, UserService} from '@loopback/authentication';
 import {User} from './models';
 import {Credentials} from './dto';
+import {Provider} from '@loopback/core';
+import {YouTobeService} from "./services";
 
 export namespace TokenServiceConstants {
   export const TOKEN_SECRET_VALUE = 'myjwts3cr3t';
@@ -36,5 +38,11 @@ export namespace PasswordHasherBindings {
 export namespace UserServiceBindings {
   export const USER_SERVICE = BindingKey.create<UserService<User, Credentials>>(
     'services.user.service',
+  );
+}
+
+export namespace MovieServiceBindings {
+  export const YOUTUBE_SERVICE = BindingKey.create<Provider<YouTobeService>>(
+      'services.youtube.service',
   );
 }

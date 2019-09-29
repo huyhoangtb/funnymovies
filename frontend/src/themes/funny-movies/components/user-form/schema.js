@@ -3,17 +3,6 @@ import { Icon, Input } from 'antd';
 import { t1 } from 'i18n';
 import Validators from 'common/validate';
 
-export const layout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 24 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 24 },
-  },
-};
-
 export default (($this) => {
   return [
     {

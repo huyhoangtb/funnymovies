@@ -1,4 +1,5 @@
 import {model, property, Entity} from '@loopback/repository';
+import {User} from "./user.model";
 
 @model({settings: {strict: false}})
 export class MovieModel extends Entity {
@@ -24,6 +25,12 @@ export class MovieModel extends Entity {
         type: 'string',
         required: true
     })
+    shareUserId: string;
+
+    @property({
+        type: 'string',
+        required: true
+    })
     title: string;
 
 
@@ -32,6 +39,36 @@ export class MovieModel extends Entity {
         required: true
     })
     description: string;
+
+    @property({
+        type: 'string',
+        required: true
+    })
+    channelTitle: string;
+
+    @property({
+        type: 'string',
+        required: true
+    })
+    viewCount: string;
+
+    @property({
+        type: 'string',
+        required: true
+    })
+    likeCount: string;
+
+    @property({
+        type: 'string',
+        required: true
+    })
+    dislikeCount: string;
+
+    @property({
+        type: 'string',
+        required: true
+    })
+    commentCount: string;
 }
 
 export interface MovieRelations {

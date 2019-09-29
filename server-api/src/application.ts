@@ -13,7 +13,7 @@ import {MyAuthenticationSequence} from './sequence';
 import {
   TokenServiceBindings,
   UserServiceBindings,
-  TokenServiceConstants,
+  TokenServiceConstants, MovieServiceBindings,
 } from './keys';
 import {JWTService} from './services/authentication/jwt-service';
 import {MyUserService} from './services/user/user-service';
@@ -24,7 +24,7 @@ import {
 import {PasswordHasherBindings} from './keys';
 import {BcryptHasher} from './services/authentication/hash.password.bcryptjs';
 import {JWTAuthenticationStrategy} from './authentication-strategies/jwt-strategy';
-
+import {YouTobeServiceProvider} from "./services";
 
 /**
  * Information from package.json
@@ -94,5 +94,7 @@ export class ServerApiApplication extends BootMixin(
     this.bind(PasswordHasherBindings.PASSWORD_HASHER).toClass(BcryptHasher);
 
     this.bind(UserServiceBindings.USER_SERVICE).toClass(MyUserService);
+
+    this.bind(MovieServiceBindings.YOUTUBE_SERVICE).toClass(YouTobeServiceProvider);
   }
 }
