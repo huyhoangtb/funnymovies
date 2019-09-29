@@ -1,11 +1,13 @@
 import React from 'react';
-import {Row, Col, Button, Input} from 'antd';
+import {Row, Col, Button, Input, message} from 'antd';
 import {connect} from 'react-redux';
 import endpoints from 'configs/endpoints';
 import Requester from 'common/network/http/Request'
 import ReactPlayer from 'react-player'
 
 import './stylesheet.scss';
+import clientDataBase from "../../../../action-creators/client-database";
+import actionCommon from "../../../../action-creators/common";
 
 
 class ShareMovie extends React.Component {
@@ -33,9 +35,23 @@ class ShareMovie extends React.Component {
    * This function will send youtube youtube to the server
    */
   onShareVideoId = async () => {
+    const {dispatch, history, popupScreenId} = this.props;
+
     const youToBeId = this.getVideoId(this.state.youTubeUrl);
-    const sharedVideo = await Requester.post(endpoints.movie.shareVideo(youToBeId));
-    console.log(sharedVideo);
+    if (!youToBeId) {
+      message.error("Your Youtube Url is not correct!");
+    }
+
+    const sharedVideoResult = await Requester.post(endpoints.movie.shareVideo(youToBeId));
+    if (sharedVideoResult && sharedVideoResult._success) {
+      const video = sharedVideoResult._result;
+      message.info(`Your movie: "${video.title}" had shared!`);
+      history.push('/');
+      dispatch(actionCommon.setStatusOfFormView({viewId: popupScreenId, display: false, title: ''}));
+      dispatch(clientDataBase.fetch(endpoints.movie.getMovies, {}, {namespace: 'movies'}));
+    } else {
+      message.error("Sharing not success, please trying again!");
+    }
   }
 
   render() {

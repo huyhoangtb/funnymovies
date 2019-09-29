@@ -8,6 +8,7 @@ export default {
   },
   movie: {
     shareVideo: (youtubeId) =>`${prefix}/movies/create/${youtubeId}`,
+    getMovies: `${prefix}/movies?filter[order]=createdDate%20DESC`,
   },
 
   context: {

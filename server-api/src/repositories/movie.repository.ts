@@ -30,6 +30,7 @@ export class MovieRepository extends DefaultCrudRepository<MovieModel,
             return null;
         }
         const movie = this.cloneMovieDataFromYouTube(youtubeData, createUser);
+        movie.createdDate = new Date();
         return await this.create(movie);
     }
 
@@ -39,8 +40,11 @@ export class MovieRepository extends DefaultCrudRepository<MovieModel,
      * @param movieId
      */
     async getMovieDetail(movieId: string): Promise<any> {
+        if(!movieId) {
+            return null;
+        }
         try {
-            const result = await this.youTobeService.getMovieDetailById('bbLd9cB7AWo');
+            const result = await this.youTobeService.getMovieDetailById(movieId);
             if (!result.items || result.items.length === 0) {
                 return null;
             }
@@ -60,11 +64,16 @@ export class MovieRepository extends DefaultCrudRepository<MovieModel,
      */
     cloneMovieDataFromYouTube(youTobeMovieData: any, user: UserProfile): MovieModel {
         const movieModel = new MovieModel();
-        const snippet = youTobeMovieData.snippet;
-        const statistics = youTobeMovieData.statistics;
+        const snippet = youTobeMovieData.snippet || {};
+        const statistics = youTobeMovieData.statistics || {};
+        const thumbnails = snippet.thumbnails || {};
 
         movieModel.videoId = youTobeMovieData.id;
-        movieModel.shareUserId = user && user.id;
+        if(user) {
+            movieModel.shareUserId = user.id;
+            movieModel.sharedByEmail = user.email || user.name;
+        }
+
         movieModel.description = snippet.description;
         movieModel.title = snippet.title;
         movieModel.channelTitle = snippet.channelTitle;
@@ -73,6 +82,7 @@ export class MovieRepository extends DefaultCrudRepository<MovieModel,
         movieModel.dislikeCount = statistics.dislikeCount;
         movieModel.viewCount = statistics.viewCount;
         movieModel.commentCount = statistics.commentCount;
+        movieModel.thumbnailUrl = thumbnails.medium.url;
 
         return movieModel;
     }

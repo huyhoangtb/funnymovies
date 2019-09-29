@@ -47,7 +47,10 @@ export class MyUserService implements UserService<User, Credentials> {
   }
 
   convertToUserProfile(user: User): UserProfile {
-    delete user.password;
-    return {...user};
+    return {
+      id: user.id,
+      name: user.email,
+      email: user.email,
+    };
   }
 }

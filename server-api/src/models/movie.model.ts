@@ -1,6 +1,22 @@
 import {model, property, Entity} from '@loopback/repository';
 import {User} from "./user.model";
 
+class Vote {
+    @property({
+        type: 'string',
+        id: true,
+        generated: true
+    })
+    id: string;
+
+    @property({
+        type: 'boolean',
+        id: true,
+        generated: true
+    })
+    vote: boolean;
+}
+
 @model({settings: {strict: false}})
 export class MovieModel extends Entity {
 
@@ -26,6 +42,12 @@ export class MovieModel extends Entity {
         required: true
     })
     shareUserId: string;
+
+    @property({
+        type: 'string',
+        required: false
+    })
+    sharedByEmail?: string;
 
     @property({
         type: 'string',
@@ -69,6 +91,24 @@ export class MovieModel extends Entity {
         required: true
     })
     commentCount: string;
+
+    @property({
+        type: 'string',
+        required: true
+    })
+    thumbnailUrl: string;
+
+    @property({
+        type: 'date',
+        required: true,
+    })
+    createdDate?: Date;
+
+    @property({
+        type: [Vote],
+        required: true,
+    })
+    votes: Vote[]
 }
 
 export interface MovieRelations {

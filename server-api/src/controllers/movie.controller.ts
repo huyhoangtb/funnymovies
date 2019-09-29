@@ -31,7 +31,6 @@ export class MovieController {
     constructor(
         @repository(MovieRepository)
         public movieRepository: MovieRepository,
-
     ) {
     }
 
@@ -58,8 +57,15 @@ export class MovieController {
             movie: any,
         @inject(AuthenticationBindings.CURRENT_USER)
             currentUserProfile: UserProfile,
-    ): Promise<MovieModel> {
-       return await this.movieRepository.createMovie(youtubeId, currentUserProfile);
+    ): Promise<{ _success: boolean, _result: MovieModel | any }> {
+        try {
+            const _result = await this.movieRepository.createMovie(youtubeId, currentUserProfile);
+            return {_result, _success: true}
+        } catch (e) {
+        }
+
+        return {_result: null, _success: false,}
+
     }
 
     @get('/movies', {
@@ -76,8 +82,12 @@ export class MovieController {
     })
     async find(
         @param.query.object('filter', getFilterSchemaFor(MovieModel)) filter?: Filter<MovieModel>,
-    ): Promise<MovieModel[]> {
-        return await this.movieRepository.find(filter);
+    ): Promise<{ _success: boolean, _result: MovieModel[] }> {
+        const _result = await this.movieRepository.find(filter);
+        return {
+            _result,
+            _success: true
+        }
     }
 
 }
