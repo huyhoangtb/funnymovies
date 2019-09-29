@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {List, Modal, Icon} from 'antd';
+import {List, Modal, Icon, Skeleton} from 'antd';
 import './stylesheet.scss';
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -75,6 +75,7 @@ class MovieDetail extends React.Component {
 
     return (
       <div className='ui-movie-item'>
+        <Skeleton loading={value.isSkeleton} active>
         <div className='ui-movie-thumbnail'>
           <img
             width={272}
@@ -132,7 +133,7 @@ class MovieDetail extends React.Component {
             <div className='ui-description'>{value.description}</div>
           </PerfectScrollbar>
         </Modal>
-
+        </Skeleton>
       </div>
 
     );
