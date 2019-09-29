@@ -21,11 +21,11 @@ export class MovieRepository extends DefaultCrudRepository<MovieModel,
      * Get Movie from youtube and store data to the local db. The data can be change in future but need to store
      * for fast search for example
      *
-     * @param movieId
+     * @param youtubeId
      * @param createUser
      */
-    async createMovie(movieId: string, createUser: UserProfile): Promise<any> {
-        const youtubeData = await this.getMovieDetail(movieId);
+    async createMovie(youtubeId: string, createUser: UserProfile): Promise<any> {
+        const youtubeData = await this.getMovieDetail(youtubeId);
         if (youtubeData === null) {
             return null;
         }
@@ -34,13 +34,23 @@ export class MovieRepository extends DefaultCrudRepository<MovieModel,
         return await this.create(movie);
     }
 
+    async vote(movieId: string, voteValue: string, createUser: UserProfile) {
+        const movie = await this.findById(movieId);
+        if (!movie) {
+            return false;
+        }
+        const votes: any = movie.votes || {};
+        votes[createUser.id] = voteValue;
+        return this.updateById(movieId, {votes});
+    }
+
     /**
      * Using Rest Service to get data from google
      *
      * @param movieId
      */
     async getMovieDetail(movieId: string): Promise<any> {
-        if(!movieId) {
+        if (!movieId) {
             return null;
         }
         try {
@@ -69,7 +79,7 @@ export class MovieRepository extends DefaultCrudRepository<MovieModel,
         const thumbnails = snippet.thumbnails || {};
 
         movieModel.videoId = youTobeMovieData.id;
-        if(user) {
+        if (user) {
             movieModel.shareUserId = user.id;
             movieModel.sharedByEmail = user.email || user.name;
         }

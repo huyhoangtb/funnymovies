@@ -45,21 +45,30 @@ export class MovieController {
     @authenticate('jwt')
     async create(
         @param.path.string('youtubeId') youtubeId: string,
-        @requestBody({
-            content: {
-                'application/json': {
-                    schema: {
-                        youtubeId: 'string'
-                    },
-                },
-            },
-        })
-            movie: any,
+        movie: any,
         @inject(AuthenticationBindings.CURRENT_USER)
             currentUserProfile: UserProfile,
     ): Promise<{ _success: boolean, _result: MovieModel | any }> {
         try {
             const _result = await this.movieRepository.createMovie(youtubeId, currentUserProfile);
+            return {_result, _success: true}
+        } catch (e) {
+        }
+
+        return {_result: null, _success: false,}
+
+    }
+
+    @post('/movies/{id}/vote/{value}')
+    @authenticate('jwt')
+    async vote(
+        @param.path.string('id') id: string,
+        @param.path.string('value') value: string,
+        @inject(AuthenticationBindings.CURRENT_USER)
+            currentUserProfile: UserProfile,
+    ): Promise<{ _success: boolean, _result: MovieModel | any }> {
+        try {
+            const _result = await this.movieRepository.vote(id, value, currentUserProfile);
             return {_result, _success: true}
         } catch (e) {
         }

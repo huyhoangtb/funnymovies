@@ -105,10 +105,10 @@ export class MovieModel extends Entity {
     createdDate?: Date;
 
     @property({
-        type: [Vote],
+        type: 'object',
         required: true,
     })
-    votes: Vote[]
+    votes: object
 }
 
 export interface MovieRelations {
