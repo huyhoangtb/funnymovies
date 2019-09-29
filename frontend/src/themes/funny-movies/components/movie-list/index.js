@@ -14,7 +14,9 @@ class MovieList extends React.Component {
     const {dispatch} = this.props;
     dispatch(clientDataBase.fetch(endpoints.movie.getMovies, {}, {
       namespace: 'movies',
-      onSuccess: () => this.setState({inited: true})
+      onSuccess: () => {
+        this.setState({inited: true});
+      }
     }))
   }
 
@@ -27,7 +29,7 @@ class MovieList extends React.Component {
     if(movies && movies.length > 0) {
       return movies;
     }
-    if(!this.inited) {
+    if(!this.state.inited) {
       return this.getSkeletonList();
     }
     return movies;
