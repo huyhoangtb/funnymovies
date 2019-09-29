@@ -83,3 +83,34 @@ $theme-font-family: 'Open Sans', "intercom-font", "ui-header-adminHelvetica Neue
     }
   }
 }
+
+.ui-header-popup-screen {
+  .ui-title {
+    display: flex;
+    //position: relative;
+    //text-align: center;
+    //justify-content: center;
+    color: #08c;
+  }
+
+  .ui-back-icon {
+    padding-right: 20px;
+    position: absolute;
+    left: 0;
+    display: none;
+    cursor: pointer;
+    :hover {
+      opacity: 0.8;
+    }
+  }
+
+
+}
+
+.ui-drawer-menu-left {
+  width: 0 !important;
+}
+
+.ui-drawer-content {
+  background-color: #ffffff !important;
+}

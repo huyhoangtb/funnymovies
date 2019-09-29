@@ -8,6 +8,12 @@
   }
 }
 
+.ant-drawer-left {
+  .ant-drawer-content-wrapper {
+    width: 500px !important;
+  }
+}
+
 .ui-drawer-bottom {
   .ant-drawer-content-wrapper {
     height: calc(100% - 100px) !important;

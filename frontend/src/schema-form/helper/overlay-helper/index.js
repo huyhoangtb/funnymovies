@@ -80,7 +80,7 @@ class OverlayHelper extends React.Component {
 
   render() {
     const {status, title, hideNewButton, newUrl, menuSchema, className, backIcon, route, disableLeftSpace} = this.props;
-    const placement = this.props.placement || 'top';
+    const placement = this.props.placement || 'left';
     const newRoute = this.getNewRoute();
     const titlePanel =
       (<div className="ui-header-popup-screen">

@@ -7,6 +7,12 @@ const Home = Loadable({
   loading: Loading,
 });
 
+const ShareMoviePage = Loadable({
+  loader: () => import('./share-movie'),
+  loading: Loading,
+});
+
 export default {
   [PAGE_CODES.HOME]: Home,
+  [PAGE_CODES.SHARE_MOVIE]: ShareMoviePage,
 }

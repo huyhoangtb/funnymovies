@@ -58,7 +58,7 @@ class PopoverSubLayoutHelper extends React.PureComponent {
       this.setState({ subRoutes: getSubRoutes(this) });
     }
     // this.setState({subRoutes: getSubRoutes(this)});
-    dispatch(actionCommon.setStatusOfFormView({ viewId: popupScreenId, display: true, isNewRoute: route.isNewRoute }));
+    dispatch(actionCommon.setStatusOfFormView({ viewId: popupScreenId, display: true, isNewRoute: route.isNewRoute, title: route.popupDefaultTitle }));
   }
 
   render() {
@@ -86,7 +86,7 @@ class PopoverSubLayoutHelper extends React.PureComponent {
       <div>
         {DefaultComponent && <DefaultComponent {...this.props} />}
         <OverlayHelper viewId={popupScreenId}
-                       backIcon={<Icon type="rollback"/>}
+                       backIcon={<Icon type="arrow-left"/>}
                        className='ui-onchanedemy-drawer'
                        route={route}
                        returnUrlOnClosed={route.path}
