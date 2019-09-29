@@ -1,6 +1,6 @@
 import Store, { history } from 'store';
 import userActionCreators from '../action-creators/user';
-import { Icon, notification } from 'antd';
+import {Icon, message, notification} from 'antd';
 import Translate, { t1 } from 'i18n';
 import React from 'react';
 
@@ -12,19 +12,11 @@ const ROLES = {
 };
 
 const notificationNotLogin = () => {
-  notification.open({
-    message: t1('You have bean not login to the system'),
-    description: t1('Please do the login to continues the action.'),
-    icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
-  });
+  message.error("Hey, hey, Please login before doing something!");
 };
 
 const notificationNotPermission = () => {
-  notification.open({
-    message: Translate.t1('Bạn không có quyền truy cập chức năng.'),
-    description: 'Phiên làm việc của bạn đã hết hạn hoặc bạn không có quyền truy cập chức năng này.',
-    icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
-  });
+  message.error("Hey, hey, You don't have permission to do this action!");
 };
 
 export const checkPermissionsOfRoute = (branchRoute, dispatch, history, authInfo) => {
@@ -44,8 +36,7 @@ export const checkPermissionsOfRoute = (branchRoute, dispatch, history, authInfo
   if (permissions && permissions.length > 0) {
     configPermissions.concat(permissions);
   }
-console.log('authInfo', authInfo);
-  if (!authInfo || authInfo.user || !authInfo.token) {
+  if (!authInfo || !authInfo.token) {
     notificationNotLogin();
     dispatch(userActionCreators.logout());
     history.push('/login');

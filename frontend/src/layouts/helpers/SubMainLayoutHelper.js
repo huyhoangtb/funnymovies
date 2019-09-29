@@ -71,7 +71,7 @@ const mapStateToProps = (state) => {
   return {
     currentLayout: state.layout,
     user: state.user.user,
-    authInfo: state.user.authInfo,
+    authInfo: state.user,
   };
 };
 

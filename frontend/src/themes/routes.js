@@ -16,6 +16,7 @@ export default [
       {
         path: `${ROOT}/share-movie`,
         exact: true,
+        loginRequired: true,
         component: (props) => <Page {...props} pageCode={PAGE_CODES.SHARE_MOVIE}/>,
       }
     ]
