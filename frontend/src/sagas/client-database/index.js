@@ -10,6 +10,7 @@ function* fetchData(action) {
     url,
     values,
   );
+
   if (response && (response._success || (options && response[options.checkSuccessOnField]))) {
     if (options && options.dispatchAfterSuccess) {
       if (options.dispatchFullResponse) {
@@ -26,7 +27,6 @@ function* fetchData(action) {
         options.onSuccess(response._result, values);
       }
     }
-
     if (options && options.namespace) {
       if (options.dispatchFullResponse) {
         yield put(dataNodeActions.storeDataUsingNamespace(response, options.namespace));

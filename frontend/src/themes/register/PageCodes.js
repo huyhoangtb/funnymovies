@@ -1,3 +1,4 @@
 export default {
-  HOME: 'home',
+  HOME: 'HOME',
+  SHARE_MOVIE: 'SHARE_MOVIE',
 }

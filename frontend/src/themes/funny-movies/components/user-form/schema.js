@@ -8,7 +8,7 @@ export default (($this) => {
     {
       name: 'email',
       isFull: true,
-      colSpan: 24,
+      colSpan: 8,
       component: Input,
       decoratorOption: { rules: [{ required: true, message: t1('Email is required!') }] },
       componentProps: {
@@ -19,7 +19,7 @@ export default (($this) => {
     {
       name: 'password',
       isFull: true,
-      colSpan: 24,
+      colSpan: 8,
       decoratorOption: { rules: [{ required: true, message: t1('Password is required!') }] },
       validator: Validators.passwordValidator,
       component: Input.Password,

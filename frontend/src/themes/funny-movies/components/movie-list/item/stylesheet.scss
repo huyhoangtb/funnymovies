@@ -1,0 +1,54 @@
+.ui-movie-item {
+  display: flex;
+  margin-bottom: 20px;
+  background: white;
+  padding: 0 16px;
+  border-radius: 5px;
+
+  .ui-movie-thumbnail {
+
+    padding: 16px 0;
+    margin-right: 20px;
+
+
+    img {
+      width: 272px;
+      cursor: pointer;
+    }
+  }
+
+  .ui-movie-detail {
+    flex-grow: 1;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .movie-title {
+      cursor: pointer;
+    }
+
+    .ant-list-item-meta-description {
+      height: 104px !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 26px;
+    }
+
+
+  }
+}
+
+.ui-player-model {
+  .ant-modal-close {
+    top: -13px;
+    right: -12px;
+  }
+
+  .ui-description {
+    height: 130px;
+  }
+
+  .m-b-40 {
+    margin-bottom: 20px !important;
+  }
+}

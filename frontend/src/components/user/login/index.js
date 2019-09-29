@@ -3,7 +3,7 @@ import enpoints from 'configs/endpoints';
 import GenerateForm from 'schema-form/GenerateForm';
 import SchemaForm from './schema';
 import Translate, {t1} from 'i18n';
-import {Button, Form, notification} from 'antd';
+import {Button, Form, message, notification} from 'antd';
 import {connect} from 'react-redux';
 import userActions from 'action-creators/user';
 import {history} from 'store';
@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import {getParamsFromSearchString} from '../../../common';
 import {Link} from "react-router-dom";
 import './stylesheet.scss';
+import FormGeneration from "../../../schema-form/GenerateForm";
 
 const FormItem = Form.Item;
 
@@ -26,13 +27,8 @@ class RegisterForm extends React.Component {
   }
 
   onLoginSuccess = (result) => {
-    const {dispatch, onLoginSuccess} = this.props;
-    notification.success(
-      {
-        message: t1('Login to the system successfully'),
-        description: t1('Hi there, Welcome back!'),
-      },
-    );
+    const {onLoginSuccess} = this.props;
+    message.success("Hey, welcome back!.. you see this message because you have logged in successfully");
     if(onLoginSuccess) {
       onLoginSuccess(result);
       return;
@@ -47,8 +43,7 @@ class RegisterForm extends React.Component {
     }
   }
   onLoginFail = (result) => {
-    const msg = result && result.msg ? result.msg : Translate.t1('Your username or password wrong!..');
-    this.setState({errMsg: msg, successMsg: undefined});
+    message.error("Your email or password is not valid, please double check again");
   }
 
   render() {
@@ -61,20 +56,14 @@ class RegisterForm extends React.Component {
           // onSuccess = {this.onLoginSuccess}
           dispatchAfterSuccess={userActions.onLoginSuccess}
           schema={SchemaForm}
-          submitLabel={t1('Login me in')}
-          rightSummitBtn={
-            [
-              <Button key='login-with-facebook' type="secondary" className='login-facebook'>
-                {t1('Login with facebook')}
-              </Button>,
-              <Button key='create-new-account' type="secondary" className='create-account'>
-                {t1('Create account')}
-              </Button>,
-              <Link key='forgot-password' to={'forgot-password'} className='forgot-password-link'>
-                {t1('Forgot password')}
-              </Link>,
-            ]
-          }
+          onFail={this.onLoginFail}
+          summitProps={{
+            shape:"round",
+            icon:"user",
+            size:"large"
+          }}
+          submitLabel={t1('Login/register')}
+
         />
       </div>
     );
@@ -85,4 +74,4 @@ RegisterForm.propTypes = {
     onLoginSuccess: PropTypes.func
 }
 
-export default connect()(RegisterForm);
+export default RegisterForm;

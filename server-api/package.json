@@ -75,7 +75,9 @@
     "isemail": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
     "loopback-connector-kv-redis": "^3.0.1",
-    "loopback-connector-mongodb": "^4.2.0"
+    "loopback-connector-mongodb": "^4.2.0",
+    "loopback-connector-rest": "^3.4.2",
+    "typedi": "^0.8.0"
   },
   "devDependencies": {
     "@loopback/build": "^2.0.5",

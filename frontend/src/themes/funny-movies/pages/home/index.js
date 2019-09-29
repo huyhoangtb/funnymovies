@@ -1,20 +1,20 @@
 import React from 'react';
+import MovieList from '../../components/movie-list'
 import {connect} from 'react-redux';
-import {Input} from 'antd';
 
 import './stylesheet.scss';
 
-const {Search} = Input;
-
-class CashRent extends React.Component {
+class FunnyMovie extends React.Component {
 
   render() {
     return (
-      <div className="ui-home-funny-movies">
-      fadsfadfads
+      <div className="ui-home-funny-movies m-t-20">
+        <div className='ui-body-panel '>
+          <MovieList/>
+        </div>
       </div>
     );
   }
 }
 
-export default connect()(CashRent);
+export default connect()(FunnyMovie);

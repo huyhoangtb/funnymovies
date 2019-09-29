@@ -1,0 +1,23 @@
+{
+  "name": "YouTubeApi",
+  "connector": "rest",
+  "baseURL": "https://www.googleapis.com/youtube/v3/videos",
+  "crud": false,
+  "options": {
+    "headers": {
+      "accept": "application/json",
+      "content-type": "application/json"
+    }
+  },
+  "operations": [
+    {
+      "template": {
+        "method": "GET",
+        "url": "https://www.googleapis.com/youtube/v3/videos?key=AIzaSyC-DWQfcxyzLeNy6qlORn6YQuA4IIWJBo4&fields=items(id,snippet(title, thumbnails,tags,description,channelTitle,publishedAt),statistics(viewCount,likeCount,dislikeCount,commentCount))&part=snippet,statistics&id={youTubeId}"
+      },
+      "functions": {
+        "getMovieDetailById": ["youTubeId"]
+      }
+    }
+  ]
+}

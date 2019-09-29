@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import UserForm from './UserForm';
+import UserForm from '../user-form';
 import LoggedInUserDashboard from '../logged-user-dashboard';
 import './stylesheet.scss';
 
