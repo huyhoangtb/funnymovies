@@ -53,7 +53,6 @@ class RegisterForm extends React.Component {
           className="login-form"
           onSuccess={this.onLoginSuccess}
           endpoint={enpoints.user.login}
-          // onSuccess = {this.onLoginSuccess}
           dispatchAfterSuccess={userActions.onLoginSuccess}
           schema={SchemaForm}
           onFail={this.onLoginFail}

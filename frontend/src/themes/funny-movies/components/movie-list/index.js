@@ -8,9 +8,29 @@ import './stylesheet.scss';
 
 class MovieList extends React.Component {
 
+  state = {inited: false}
+
   componentDidMount() {
     const {dispatch} = this.props;
-    dispatch(clientDataBase.fetch(endpoints.movie.getMovies, {}, {namespace: 'movies'}))
+    dispatch(clientDataBase.fetch(endpoints.movie.getMovies, {}, {
+      namespace: 'movies',
+      onSuccess: () => this.setState({inited: true})
+    }))
+  }
+
+  getSkeletonList = () => {
+    return [{isSkeleton: true},{isSkeleton: true},{isSkeleton: true}]
+  }
+
+  getMoviesList = () => {
+    const {movies} = this.props;
+    if(movies && movies.length > 0) {
+      return movies;
+    }
+    if(!this.inited) {
+      return this.getSkeletonList();
+    }
+    return movies;
   }
 
   render() {
@@ -20,7 +40,7 @@ class MovieList extends React.Component {
         <List
           itemLayout="vertical"
           size="large"
-          dataSource={movies}
+          dataSource={this.getMoviesList()}
           renderItem={movie => (<MovieDetail value={movie} currentUser={currentUser}/>)}
         />,
       </div>

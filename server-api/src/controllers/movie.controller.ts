@@ -45,7 +45,16 @@ export class MovieController {
     @authenticate('jwt')
     async create(
         @param.path.string('youtubeId') youtubeId: string,
-        movie: any,
+        @requestBody({
+            content: {
+                'application/json': {
+                    schema: {
+                        youtubeId: 'string'
+                    },
+                },
+            },
+        })
+            movie: any,
         @inject(AuthenticationBindings.CURRENT_USER)
             currentUserProfile: UserProfile,
     ): Promise<{ _success: boolean, _result: MovieModel | any }> {
@@ -76,6 +85,7 @@ export class MovieController {
         return {_success: false,}
 
     }
+
 
     @get('/movies', {
         responses: {

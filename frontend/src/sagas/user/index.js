@@ -9,8 +9,7 @@ function* logout(action) {
     Requester.get,
     endpoints.user.logout,
   );
-  yield put(userActions.receivedToken({}));
-  yield put(userActions.receivedUserInfo({}));
+  yield put(userActions.onLoginSuccess({user: {}}));
   if (options && options.onSuccess) {
     options.onSuccess(result);
   }
