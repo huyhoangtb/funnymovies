@@ -58,19 +58,19 @@ export class MovieModel extends Entity {
 
     @property({
         type: 'string',
-        required: true
+        required: false
     })
     description: string;
 
     @property({
         type: 'string',
-        required: true
+        required: false
     })
     channelTitle: string;
 
     @property({
         type: 'string',
-        required: true
+        required: false
     })
     viewCount: string;
 
@@ -82,19 +82,19 @@ export class MovieModel extends Entity {
 
     @property({
         type: 'string',
-        required: true
+        required: false
     })
     dislikeCount: string;
 
     @property({
         type: 'string',
-        required: true
+        required: false
     })
     commentCount: string;
 
     @property({
         type: 'string',
-        required: true
+        required: false
     })
     thumbnailUrl: string;
 
@@ -106,7 +106,7 @@ export class MovieModel extends Entity {
 
     @property({
         type: 'object',
-        required: true,
+        required: false,
     })
     votes: object
 }

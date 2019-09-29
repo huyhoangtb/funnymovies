@@ -1,13 +1,17 @@
 import {Client} from '@loopback/testlab';
 import {ServerApiApplication} from '../..';
 import {setupApplication} from './test-helper';
+import {givenEmptyDatabase} from "../helpers/database.helpers";
 
-describe('HomePage', () => {
+describe('HomePage', async () => {
   let app: ServerApiApplication;
   let client: Client;
 
   before('setupApplication', async () => {
     ({app, client} = await setupApplication());
+  });
+  before('givenEmptyDatabase', async () => {
+    await givenEmptyDatabase();;
   });
 
   after(async () => {
