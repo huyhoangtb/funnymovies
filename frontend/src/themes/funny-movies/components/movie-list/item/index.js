@@ -1,9 +1,13 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {List, Modal, Icon} from 'antd';
 import './stylesheet.scss';
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import ReactPlayer from "react-player";
+import Requester from "../../../../../common/network/http/Request";
+import endpoints from "../../../../../configs/endpoints";
+import clientDataBase from "../../../../../action-creators/client-database";
 
 
 const IconText = ({type, text}) => (
@@ -24,21 +28,50 @@ class MovieDetail extends React.Component {
     });
   };
 
+  onVote = async (voteValue) => {
+    const {value, dispatch} = this.props;
+    let vote = voteValue;
+    if(this.getMyVote()) {
+      vote = 'reset'
+    }
+    const voteResult = await Requester.post(endpoints.movie.vote(value.id, vote));
+    if(voteResult && voteResult._success) {
+      dispatch(clientDataBase.fetch(endpoints.movie.getMovies, {}, {namespace: 'movies'}));
+    }
+  }
+
+  getMyVote = () => {
+    const {value, currentUser} = this.props;
+    const votes = value.votes || {};
+    return votes[currentUser && currentUser.id];
+  }
+
   render() {
     const {value, currentUser} = this.props;
-    let userInfoAndVote =  (
-        <span>
+    const myVote = this.getMyVote();
+
+    const voteControl = [];
+    if (!myVote || myVote === 'like') {
+      voteControl.push(
+        <Icon type='like-o' onClick={async () => await this.onVote('like')} className={'m-l-20 m-r-10'}
+              style={{fontSize: 25, color: '#08c'}}/>);
+    }
+    if (!myVote || myVote === 'dislike') {
+      voteControl.push(
+        <Icon type='dislike' onClick={async () => await this.onVote('dislike')}
+              style={{fontSize: 25, color: 'red'}}/>
+      );
+    }
+
+    let userInfoAndVote = (
+      <span>
           {value.sharedByEmail ? `Shared by: ${value.sharedByEmail}` : ''}
-          {
-            currentUser && currentUser.id &&
-              [
-                <Icon type='like-o' className={'m-l-20 m-r-10'} style={{fontSize: 25, color: '#08c'}}/>,
-                <Icon type='dislike' style={{fontSize: 25, color: 'red'}}/>
-              ]
-          }
+        {
+          currentUser && currentUser.id && voteControl
+        }
 
         </span>
-      )
+    )
 
     return (
       <div className='ui-movie-item'>
@@ -53,6 +86,7 @@ class MovieDetail extends React.Component {
         <List.Item
           key={value.id}
           actions={[
+            <span>Youtube statistics</span>,
             <IconText type="like-o" text={value.likeCount} key="list-vertical-like-o"/>,
             <IconText type="dislike" text={value.likeCount} key="list-vertical-dislike"/>,
             <IconText type="eye" text={value.viewCount} key="list-vertical-eye"/>,
@@ -105,4 +139,5 @@ class MovieDetail extends React.Component {
   }
 }
 
-export default MovieDetail;
+
+export default connect()(MovieDetail);

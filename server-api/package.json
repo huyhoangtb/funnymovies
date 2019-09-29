@@ -22,7 +22,7 @@
     "eslint": "lb-eslint --report-unused-disable-directives .",
     "eslint:fix": "npm run eslint -- --fix",
     "pretest": "npm run clean && npm run build",
-    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "test": "mocha  --timeout 10000 --recursive \"dist/__tests__\"",
     "posttest": "npm run lint",
     "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
     "docker:build": "docker build -t server-api .",
@@ -82,7 +82,8 @@
   "devDependencies": {
     "@loopback/build": "^2.0.5",
     "@loopback/eslint-config": "^2.0.2",
-    "@loopback/testlab": "^1.7.1",
+    "@loopback/testlab": "^1.9.1",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^10.14.13",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
@@ -90,6 +91,7 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-eslint-plugin": "^2.1.0",
     "eslint-plugin-mocha": "^6.0.0",
+    "mocha": "^6.2.1",
     "nodemon": "^1.19.1",
     "source-map-support": "^0.5.12",
     "typescript": "~3.5.3"
