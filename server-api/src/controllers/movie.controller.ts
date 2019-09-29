@@ -66,14 +66,14 @@ export class MovieController {
         @param.path.string('value') value: string,
         @inject(AuthenticationBindings.CURRENT_USER)
             currentUserProfile: UserProfile,
-    ): Promise<{ _success: boolean, _result: MovieModel | any }> {
+    ): Promise<{ _success: boolean}> {
         try {
-            const _result = await this.movieRepository.vote(id, value, currentUserProfile);
-            return {_result, _success: true}
+            const _success = await this.movieRepository.vote(id, value, currentUserProfile);
+            return {_success}
         } catch (e) {
         }
 
-        return {_result: null, _success: false,}
+        return {_success: false,}
 
     }
 

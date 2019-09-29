@@ -40,8 +40,14 @@ export class MovieRepository extends DefaultCrudRepository<MovieModel,
             return false;
         }
         const votes: any = movie.votes || {};
-        votes[createUser.id] = voteValue;
-        return this.updateById(movieId, {votes});
+        if(voteValue === 'reset') {
+            delete votes[createUser.id];
+        } else {
+            votes[createUser.id] = voteValue;
+        }
+
+        await this.updateById(movieId, {votes});
+        return true;
     }
 
     /**
