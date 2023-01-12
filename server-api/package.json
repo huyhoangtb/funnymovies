@@ -71,7 +71,7 @@
     "@types/bcryptjs": "^2.4.2",
     "@types/jsonwebtoken": "^8.3.3",
     "bcryptjs": "^2.4.3",
-    "class-validator": "^0.9.1",
+    "class-validator": "^0.14.0",
     "isemail": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
     "loopback-connector-kv-redis": "^3.0.1",
